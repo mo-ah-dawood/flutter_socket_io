@@ -66,9 +66,9 @@ class _MyHomePageState extends State<MyHomePage> {
         .createInstance(SocketOptions(
       "https://chat.rentalappsa.com",
       enableLogging: true,
-      // transports: [
-      //   Transports.POLLING,
-      // ],
+      transports: [
+        Transports.POLLING,
+      ],
     ))
         .then((value) {
       setState(() {
