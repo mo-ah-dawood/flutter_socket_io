@@ -80,7 +80,7 @@ public class AdharaSocket: NSObject, FlutterPlugin {
                     socket.emit(eventName,  data)
                 } else {
                    socket.emitWithAck(eventName, with: data).timingOut(after: 0) { data in
-                       self.channel.invokeMethod(AdharaSocketIoPlatformMethod.incomingAck, arguments: [
+                       self.channel.invokeMethod("incomingAck", arguments: [
                            "args": data,
                            "reqId": reqId as Any
                        ]);
