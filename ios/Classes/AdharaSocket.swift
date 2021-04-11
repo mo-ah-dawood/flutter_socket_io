@@ -79,12 +79,12 @@ public class AdharaSocket: NSObject, FlutterPlugin {
                 if (reqId == nil) {
                     socket.emit(eventName,  data)
                 } else {
-                    socket.emitWithAck(eventName,  data).timingOut(after: 0) { data in
-                        self.channel.invokeMethod("incomingAck", arguments: [
-                            "args": data,
-                            "reqId": reqId
-                                ?? ""                        ]);
-                    }
+                   socket.emitWithAck(eventName, with: data).timingOut(after: 0) { data in
+                       self.channel.invokeMethod(AdharaSocketIoPlatformMethod.incomingAck, arguments: [
+                           "args": data,
+                           "reqId": reqId as Any
+                       ]);
+                   }
                 }
                 result(nil)
             case "isConnected":
